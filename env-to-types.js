@@ -108,7 +108,7 @@ const stringEnv = readFileSync(configCli.envPath, {
 });
 
 function writeEnvTypes(stringEnv, path) {
-  writeEnvTypes(
+  writeFileSync(
     path,
     `declare namespace NodeJS {
       export interface ProcessEnv {

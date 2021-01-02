@@ -1,6 +1,6 @@
 {
   "name": "env-to-types",
-  "version": "0.1.0-development",
+  "version": "1.0.1",
   "description": "Generate .d.ts for .env files w/ a CLI",
   "main": "env-to-types.js",
   "scripts": {
@@ -11,7 +11,7 @@
     "types",
     "env"
   ],
-  "author": "Baptiste Marcon",
+  "author": "Baptiste Marcon <baptistemcn@icloud.com>",
   "license": "MIT",
   "homepage": "https://github.com/baptistemcn/env-to-types",
   "repository": "github:baptistemcn/env-to-types",
