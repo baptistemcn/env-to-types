@@ -30,7 +30,7 @@ function showErrors(msg) {
 
 const parseArguments = (args) => {
   const configCli = {
-    ouputTypes: "env.d.ts",
+    outputTypes: "env.d.ts",
   };
 
   while (args.lenght > 0) {
@@ -56,7 +56,7 @@ const parseArguments = (args) => {
           showErrors(
             "Expecte output file to end in .d.ts, bad input: " + outputTypes
           );
-          configCli.ouputTypes = outputTypes;
+          configCli.outputTypes = outputTypes;
         }
         break;
 
@@ -97,7 +97,7 @@ if (!configCli.envPath) {
   printHelp(1);
 }
 if (configCli.help) {
-  return printHelp(0);
+  printHelp(0);
 }
 if (configCli.version) {
   return printVersion();
