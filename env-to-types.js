@@ -7,7 +7,7 @@ const { readFileSync, writeFileSync, existsSync, lstatSync } = require("fs");
 const printVersion = () => console.log("v" + pkg.version);
 const printHelp = (exitCode) => {
   console.log(
-    chalk`{bleu env-to-types} - Start with a .env file and Generate a .d.ts file.
+    chalk`{blue env-to-types} - Start with a .env file and Generate a .d.ts file.
         {bold USAGE}
 
         {blue env-to-types} path/to/.env -> path to your .env file
