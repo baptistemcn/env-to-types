@@ -1,10 +1,10 @@
 #!/usr/bin/env node
-const pkg = require("./package.json");
-const chalk = require("chalk");
-const { join } = require("path");
-const { readFileSync, writeFileSync, existsSync, lstatSync } = require("fs");
+import { version } from "./package.json";
+import chalk from "chalk";
+import { join } from "path";
+import { readFileSync, writeFileSync, existsSync, lstatSync } from "fs";
 
-const printVersion = () => console.log("v" + pkg.version);
+const printVersion = () => console.log("v" + version);
 const printHelp = (exitCode) => {
   console.log(
     chalk`{blue env-to-types} - Start with a .env file and Generate a .d.ts file.
