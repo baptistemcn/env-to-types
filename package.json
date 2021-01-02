@@ -11,5 +11,11 @@
     "env"
   ],
   "author": "Baptiste Marcon",
-  "license": "MIT"
+  "license": "MIT",
+  "homepage": "https://github.com/baptistemcn/env-to-types",
+  "repository": "github:baptistemcn/env-to-types",
+  "bugs": "https://github.com/baptistemcn/env-to-types/issues",
+  "dependencies": {
+    "chalk": "^4.1.0"
+  }
 }
