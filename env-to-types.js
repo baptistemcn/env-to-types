@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 const pkg = require("./package.json");
 const chalk = require("chalk");
+const { join } = require("path")
 
 const printVersion = () => console.log("v" + pkg.version);
 const printHelp = (exitCode) => {
@@ -82,9 +83,43 @@ const parseArguments = (args) => {
     }
   }
 
-  if (!configCli.envPath && existsSync(joint(process.cwd(), ".env"))) {
+  if (!configCli.envPath && existsSync(join(process.cwd(), ".env"))) {
     configCli.envPath = join(process.cwd(), ".env");
   }
 
   return configCli;
 };
+
+const configCli = parseArguments(process.argv.slice(2));
+
+if (!configCli.envPath) {
+  printHelp(1);
+}
+if (configCli.help) {
+  return printHelp(0);
+}
+if (configCli.version) {
+  return printVersion();
+}
+
+const stringEnv = readFileSync(configCli.envPath, {
+  encoding: "uft8",
+});
+
+const writeEnvTypes (envString, path) {
+  writeEnvTypes(
+    path,
+    `declare namespace NodeJS {
+            export interface ProcessEnv {
+                ${envString
+      .split("\n")
+      .filter((line) => line.trim() && line.trim().indexOf("#") !== 0)
+      .map((x, i) => `${i ? "   " : ""}${x.trim().split("=")[0]}: string;`)
+      .join("\n")}
+                }
+            }
+            `
+  );
+  console.log("Convert env to types here: ", path);
+};
+
