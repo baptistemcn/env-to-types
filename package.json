@@ -1,6 +1,6 @@
 {
   "name": "env-to-types",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Generate .d.ts for .env files w/ a CLI",
   "type": "module",
   "bin": {

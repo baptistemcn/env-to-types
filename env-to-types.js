@@ -94,13 +94,13 @@ const parseArguments = (args) => {
 const configCli = parseArguments(process.argv.slice(2));
 
 if (!configCli.envPath) {
-  printHelp(1);
+  return printHelp(1);
 }
 if (configCli.help) {
-  printHelp(0);
+  return printHelp(0);
 }
 if (configCli.version) {
-  printVersion();
+  return printVersion();
 }
 
 const stringEnv = readFileSync(configCli.envPath, {
