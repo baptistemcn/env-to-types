@@ -1,0 +1,15 @@
+{
+  "name": "env-to-types",
+  "version": "0.1.0",
+  "description": "Generate .d.ts for .env files w/ a CLI",
+  "main": "env-to-types.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "types",
+    "env"
+  ],
+  "author": "Baptiste Marcon",
+  "license": "MIT"
+}
