@@ -19,3 +19,8 @@ const printHelp = (exitCode) => {
   );
   return process.exit(exitCode);
 };
+
+function showErrors(msg) {
+  console.log(chalk`{red Errors:} ${msg}`);
+  process.exit(1);
+}
