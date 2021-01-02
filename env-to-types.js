@@ -94,7 +94,7 @@ const parseArguments = (args) => {
 const configCli = parseArguments(process.argv.slice(2));
 
 if (!configCli.envPath) {
-  return printHelp(1);
+  printHelp(1);
 }
 if (configCli.help) {
   return printHelp(0);
