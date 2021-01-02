@@ -1,10 +1,11 @@
 {
   "name": "env-to-types",
-  "version": "0.1.0",
+  "version": "0.1.0-development",
   "description": "Generate .d.ts for .env files w/ a CLI",
   "main": "env-to-types.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "semantic-release": "semantic-release"
   },
   "keywords": [
     "types",
@@ -17,5 +18,8 @@
   "bugs": "https://github.com/baptistemcn/env-to-types/issues",
   "dependencies": {
     "chalk": "^4.1.0"
+  },
+  "devDependencies": {
+    "semantic-release": "^17.3.1"
   }
 }
