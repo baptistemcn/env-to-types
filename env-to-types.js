@@ -16,7 +16,7 @@ const printHelp = (exitCode) => {
 
         -v, --version               Show the CLI Version
         -h, --help                  Show CLI usage information
-        -o, --output-type           Output name/path for types files | default will be \`types.d.ts\`
+        -o, --output-type           Output name/path for types files | default will be \`env.d.ts\`
         -e, --env-path-example      Path to save generate .env.example file
       `
   );
