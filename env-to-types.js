@@ -100,7 +100,7 @@ if (configCli.help) {
   printHelp(0);
 }
 if (configCli.version) {
-  return printVersion();
+  printVersion();
 }
 
 const stringEnv = readFileSync(configCli.envPath, {
