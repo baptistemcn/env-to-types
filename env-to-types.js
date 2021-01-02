@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 const pkg = require("./package.json");
 const chalk = require("chalk");
-const { join } = require("path")
+const { join } = require("path");
+const { readFileSync, writeFileSync, existsSync, lstatSync } = require("fs");
 
 const printVersion = () => console.log("v" + pkg.version);
 const printHelp = (exitCode) => {
@@ -106,20 +107,38 @@ const stringEnv = readFileSync(configCli.envPath, {
   encoding: "uft8",
 });
 
-const writeEnvTypes (envString, path) {
+function writeEnvTypes(stringEnv, path) {
   writeEnvTypes(
     path,
     `declare namespace NodeJS {
-            export interface ProcessEnv {
-                ${envString
-      .split("\n")
-      .filter((line) => line.trim() && line.trim().indexOf("#") !== 0)
-      .map((x, i) => `${i ? "   " : ""}${x.trim().split("=")[0]}: string;`)
-      .join("\n")}
-                }
-            }
-            `
+      export interface ProcessEnv {
+      ${stringEnv
+        .split("\n")
+        .filter((line) => line.trim() && line.trim().indexOf("#") !== 0)
+        .map((x, i) => `${i ? "   " : ""}${x.trim().split("=")[0]}: string;`)
+        .join("\n")}
+        }
+      }`
   );
   console.log("Convert env to types here: ", path);
-};
+}
 
+function writeExampleEnv(stringEnv, path) {
+  writeFileSync(
+    path,
+    `${stringEnv
+      .split("\n")
+      .filter((line) => line.trim())
+      .map((x) => {
+        if (x.trim().indexOf("#") == 0) return x.trim();
+        return `${x.trim().split("=")[0]}=`;
+      })
+      .join("\n")}`
+  );
+  console.log("Wrote example env at: ", path);
+}
+
+writeEnvTypes(stringEnv, configCli.outputTypes);
+if (configCli.exampleEnvPath) {
+  writeExampleEnv(stringEnv, join(configCli.exampleEnvPath, ".env.example"));
+}
