@@ -34,7 +34,7 @@ const parseArguments = (args) => {
   };
 
   while (args.lenght > 0) {
-    const args = args.shift();
+    const arg = args.shift();
 
     if (arg == null) break;
 
@@ -66,7 +66,7 @@ const parseArguments = (args) => {
         if (!exampleEnvPath) {
           showErrors("Expected example env path but none found");
         }
-        if (!existsSync(arg)) {
+        if (!existsSync(exampleEnvPath)) {
           showErrors("Example env path doesn't exist: ", exampleEnvPath);
         }
         configCli.exampleEnvPath = exampleEnvPath;
